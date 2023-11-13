@@ -3,20 +3,22 @@ public class DogHotel {
     public static void main(String[] args) {
         int firstAnswer = 0;
         Scanner scanner = new Scanner(System.in);
-        while (firstAnswer < 3) {
-        System.out.println(" ----------------------------");
-        System.out.println("| Welkom in het hondenhotel! |");
-        System.out.println("|      Wat wilt u doen?      |");
-        System.out.println("|    1. hond toevoegen.      |");
-        System.out.println("|   2. hond verwijderen.     |");
-        System.out.println("|      3. Afsluiten.         |");
-        System.out.println(" ----------------------------");
-        firstAnswer = scanner.nextInt();
         Dog dog1 = null;
         Dog dog2 = null;
         Dog dog3 = null;
+        while (firstAnswer <= 3) {
+            System.out.println(" ----------------------------");
+            System.out.println("| Welkom in het hondenhotel! |");
+            System.out.println("|      Wat wilt u doen?      |");
+            System.out.println("|    1. hond toevoegen.      |");
+            System.out.println("|   2. hond verwijderen.     |");
+            System.out.println("|      3. Overzicht          |");
+            System.out.println("|      4. Aflsuiten          |");
+            System.out.println(" ----------------------------");
+            firstAnswer = scanner.nextInt();
             if (firstAnswer == 1) {
                 if (dog1 == null) {
+                    firstAnswer = 0;
                     System.out.println("wat is de naam van u hond?");
                     dog1 = new Dog();
                     dog1.name = scanner.next();
@@ -55,8 +57,7 @@ public class DogHotel {
                             "  / - \\\n" +
                             " /    |\n" +
                             "V__) ||\n");
-                }
-                if (dog2 == null) {
+                } else if (dog2 == null) {
                     System.out.println("wat is de naam van u hond?");
                     dog2 = new Dog();
                     dog2.name = scanner.next();
@@ -95,8 +96,7 @@ public class DogHotel {
                             "  / - \\\n" +
                             " /    |\n" +
                             "V__) ||\n");
-                }
-                if (dog3 == null) {
+                } else if (dog3 == null) {
                     System.out.println("wat is de naam van u hond?");
                     dog3 = new Dog();
                     dog3.name = scanner.next();
@@ -135,40 +135,61 @@ public class DogHotel {
                             "  / - \\\n" +
                             " /    |\n" +
                             "V__) ||\n");
-                }
-                else {
+                } else {
                     System.out.println("er is geen plek meer.");
                 }
-
             }
-
+            if (firstAnswer == 3) {
+                if (dog1 != null) {
+                    System.out.println("de naam van hond 1 is " + dog1.name + ".");
+                    System.out.println("het ras  van hond 1 is " + dog1.breed + ".");
+                    System.out.println("de kleur van hond 1 is " + dog1.color + ".");
+                    System.out.println("het gender van hond 1 is " + dog1.sex + ".");
+                }
+                if (dog2 != null) {
+                    System.out.println("de naam van hond 2 is " + dog2.name + ".");
+                    System.out.println("het ras  van hond 2 is " + dog2.breed + ".");
+                    System.out.println("de kleur van hond 2 is " + dog2.color + ".");
+                    System.out.println("het gender van hond 2 is " + dog2.sex + ".");
+                }
+                if (dog3 != null) {
+                    System.out.println("de naam van hond 3 is " + dog3.name + ".");
+                    System.out.println("het ras  van hond 3 is " + dog3.breed + ".");
+                    System.out.println("de kleur van hond 3 is " + dog3.color + ".");
+                    System.out.println("het gender van hond 3 is " + dog3.sex + ".");
+                } else if (dog1 == null && dog2 == null && dog3 == null){
+                    System.out.println("er zijn geen honden aanwezig.");
+                }
+            }
             if (firstAnswer == 2) {
                 System.out.println("Hoe noemt de hond die je wilt verwijderen : ");
                 String dogDelete = scanner.next();
                 if (dog1 != null) {
-                    if (dog1.name == dogDelete) {
-                        dog1 = null;
+                    if (dog1.name.equals(dogDelete)) {
                         System.out.println(dog1.name + " is verwijderd");
+                        dog1 = null;
+
                     }
                 }
                 if (dog2 != null) {
-                    if (dog2.name == dogDelete) {
+                    if (dog2.name.equals(dogDelete)) {
+                        System.out.println(dog2.name + " is verwijderd");
                         dog2 = null;
-                        System.out.println(dog1.name + " is verwijderd");
+
                     }
                 }
                 if (dog3 != null) {
-                    if (dog3.name == dogDelete) {
+                    if (dog3.name.equals(dogDelete)) {
+                        System.out.println(dog3.name + " is verwijderd");
                         dog3 = null;
-                        System.out.println(dog1.name + " is verwijderd");
-                    }
+
                     }
                 }
             }
-            if (firstAnswer == 3) {
+            if (firstAnswer == 4) {
                 System.out.println("Programma wordt afgesloten.");
                 System.exit(0);
             }
         }
     }
-
+}
